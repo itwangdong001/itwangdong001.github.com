@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{ margin:0; padding:0;}
+	.box{ width:400px; height:20px; border:1px solid #000; border-radius:10px; margin:50px auto; position:relative; overflow:hidden;}
+	.box div{ position:absolute; top:0; left:0; width:400px; height:400px; background:-webkit-repeating-linear-gradient(-45deg,red 0px,red 10px,#fff 10px,#fff 20px,blue 20px,blue 30px,#fff 30px,#fff 40px);}
+	.html1{ margin-left:50px; margin-right:10px;}
+	.html1,.html2{ float:left;}
+</style>
+<script>
+	window.onload=function(){
+		var oHear=document.querySelector('.hear');
+		var oC1=document.querySelector('.color1');
+		var oC2=document.querySelector('.color2');
+		var oH1=document.querySelector('.html1');
+		var oH2=document.querySelector('.html2');
+		var t=0;
+		setInterval(function(){
+			t-=2;
+			oHear.style.top=t%379+'px';	
+		},30);	
+		oH1.innerHTML=oC1.value;
+		oC1.onchange=function(){
+			oHear.style.background='-webkit-repeating-linear-gradient(-45deg,'+this.value+' 0px,'+this.value+' 10px,#fff 10px,#fff 20px,blue 20px,blue 30px,#fff 30px,#fff 40px)';	
+			oH1.innerHTML=this.value;
+			oH1.style.color=''+this.value+'';
+		};
+		oH2.innerHTML=oC2.value;
+		oC2.onchange=function(){
+			oHear.style.background='-webkit-repeating-linear-gradient(-45deg,red 0px,red 10px,#fff 10px,#fff 20px,'+this.value+' 20px,'+this.value+' 30px,#fff 30px,#fff 40px)';	
+			oH2.innerHTML=this.value;
+			oH2.style.color=''+this.value+'';
+		};
+	};
+</script>
+</head>
+
+<body>
+	颜色：
+	<input type="color" class="color1" />
+	<input type="color" class="color2" /><br />
+    	<div class="html1"></div>
+    	<div class="html2"></div>
+    <div class="box">
+    	<div class="hear"></div>
+    </div>
+</body>
+</html>
