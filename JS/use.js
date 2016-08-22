@@ -13,4 +13,5 @@ addEvent(window, 'load', function (){
 	fnMySfq();
 	myPicLoad();
 	fnMyLast();
+	
 });

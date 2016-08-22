@@ -1047,36 +1047,32 @@
     }
 })(); (function() {
     window.fnMyLast = function() {
-        var oBoxes = document.getElementById("green"),
-        oColl = getByClass(oBoxes, "collection")[0],
-        oClose = getByClass(oBoxes, "close")[0],
-        oShow = getByClass(oBoxes, "myTab")[0],
-        oTbCn = getByClass(oBoxes, "tabContent")[0],
+        var oBox = document.getElementById("green"),
+        oColl = getByClass(oBox, "collection")[0],
+        oClose = getByClass(oBox, "close")[0],
+        oShow = getByClass(oBox, "myTab")[0],
+        oTbCn = getByClass(oBox, "tabContent")[0],
         oTabDiv = getByClass(oTbCn, "tabDiv"),
         aLi = oColl.getElementsByTagName("li");
-		var oBox = document.querySelector('.box'),
-		oClose2 = getByClass(oBox, "close")[0];
         oClose.onclick = function() {
             oShow.style.display = "none";
-            oTbCn.style.display = "none";
-        };
-		oClose2.onclick = function() {
-			oShow.style.display = "none";
-            oBox.style.display = "none";
+            oTbCn.style.display = "none"
+
         };
         aLi[0].onclick = function() {
             oShow.style.display = oTbCn.style.display = oTabDiv[0].style.display = "block";
             myChrom()
         };
-		aLi[1].onclick = function() {
-			for (var i = 0; i < aLi.length; i++) {
-				oTabDiv[0].style.display = "none"
-			}
-			oShow.style.display = "block"; 
-			oTbCn.style.display = "block"; 
-			//oTabDiv[index].style.display = "block";
-		};
-    };
+        for (var i = 1; i < aLi.length; i++) { (function(index) {
+                aLi[i].onclick = function() {
+                    for (var i = 0; i < aLi.length; i++) {
+                        oTabDiv[0].style.display = "none"
+                    }
+                    oShow.style.display = oTbCn.style.display = oTabDiv[index].style.display = "block"
+                }
+            })(i)
+        }
+    }
 })();
 (function(){
 		window.onload = function(){
@@ -1115,27 +1111,3 @@
 		};
 	};	
 })();
-;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
